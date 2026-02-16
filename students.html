@@ -1,116 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For Students | YouthGood.ai</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <img src="youthgood-logo.png" alt="YouthGood.ai Logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="teachers.html">For Teachers</a>
-      <a href="students.html">For Students</a>
-      <a href="fun.html">Fun</a>
-      <a href="yeah.html">Y.E.A.H. Program</a>
-      <a href="blogs.html">Blogs</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+{% extends 'base.html' %}
+{% block content %}
 
-  <section class="hero"></section>
+<!-- PAGE HEADER -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">For Students</h2>
+    <p class="lead text-light opacity-75">
+      AI-powered tools to help you learn smarter, grow faster, and lead responsibly.
+    </p>
+  </div>
+</section>
 
-  <section id="students" class="section">
-    <h2>For Students</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="college.png" alt="College Admissions Guide" />
-        <h3>College Admissions Guide</h3>
-        <p>Get advice and planning tips for top universities!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-L5HuH6Fw9-youthgood-ai-college-admissions-guide" target="_blank">Start Planning!</a>
-      </div>
-      <div class="card">
-        <img src="ai.png" alt="Learn Ethical AI" />
-        <h3>Learn Ethical AI</h3>
-        <p>Learn about ethical AI and its responsible use with the Ethical AI GPT!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-67956248a69081918874b4a6cfe48cbd-youthgood-ai-learn-ethical-ai" target="_blank">Start Learning!</a>
-      </div>
-      <div class="card">
-        <img src="sat.png" alt="SAT Study Buddy" />
-        <h3>SAT Study Buddy</h3>
-        <p>Your AI friend to help prepare for the SAT.</p>
-        <a class="btn" href="https://chatgpt.com/g/g-hWcrS9Nnh-youthgood-ai-sat-study-buddy" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="geometry.png" alt="Geometry GPT" />
-        <h3>Geometry GPT</h3>
-        <p>Step-by-step geometry tutor with explanations.</p>
-        <a class="btn" href="https://chatgpt.com/g/g-IR6Z6WJNg-youthgood-ai-geometry-mathematics" target="_blank">Try It!</a>
-      </div>
-      <div class="card">
-        <img src="biomed.png" alt="Biomed GPT" />
-        <h3>Biomed GPT</h3>
-        <p>Supports beginner students in biomedical studies with study tips, career advice, and research guidance.</p>
-        <a class="btn" href="https://chatgpt.com/g/g-679ebbc68134819190f2cd813fb8c3b5-youthgood-ai-biomed" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="biology.png" alt="Biology GPT" />
-        <h3>Biology GPT</h3>
-        <p>Improve your biology skills through the help of an AI tutor!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-679eb62b0fd08191b9acc01004bded94-youthgood-ai-biology" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="chemistry.png" alt="Chemistry GPT" />
-        <h3>Chemistry GPT</h3>
-        <p>Chemistry expert that explains concepts and solves problems with a touch of humor!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-j7J1BqniU-youthgood-ai-chemistry" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="physics.png" alt="Physics GPT" />
-        <h3>Physics GPT</h3>
-        <p>An engaging Physics tutor who combines learning with laughter by ending each session with a joke!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-wc7wAkaQo-youthgood-ai-physics" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="worldhistory.png" alt="World History GPT" />
-        <h3>World History GPT</h3>
-        <p>Expand your World History knowledge through engaging lessons!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-aGv1WbWGN-youthgood-ai-world-history" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="english.png" alt="English GPT" />
-        <h3>English GPT</h3>
-        <p>Improve your essays, writings, and more!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-gfA9CMJdc-youthgood-ai-english" target="_blank">Start Studying!</a>
-      </div>
-      <div class="card">
-        <img src="technews.png" alt="AI and Tech News GPT" />
-        <h3>AI and Tech News GPT</h3>
-        <p>Provides updates on the latest AI and Tech News!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-HW4Mt4Ahs-youthgood-ai-artificial-intelligence" target="_blank">Start Learning!</a>
-      </div>
-      <div class="card">
-        <img src="ehs.png" alt="Emerald High School GPT" />
-        <h3>Emerald High School GPT</h3>
-        <p>Your friendly guide to Emerald High School info and events!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-67afe93056608191aa29c3552f25890a-emerald-high-school-gpt-youthgood-ai" target="_blank">Try it!</a>
-      </div>
-    </div>
-  </section>
+<!-- STUDENT GPT CARDS -->
+<section class="pb-5 text-light">
+  <div class="container">
+    <div class="row g-4">
 
-  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-    <div style="margin-left: 1.5rem;">
-      <a class="btn" href="teachers.html">Explore Teachers GPTs</a>
-    </div>
-    <div style="margin-left: 1.5rem;">
-      <a class="btn" href="fun.html">Explore Fun GPTs</a>
+      {% set gpts = [
+        ("college.png","College Admissions Guide","Get advice and planning tips for top universities!","https://chatgpt.com/g/g-L5HuH6Fw9-youthgood-ai-college-admissions-guide","Start Planning!"),
+        ("ai.png","Learn Ethical AI","Learn about ethical AI and its responsible use.","https://chatgpt.com/g/g-67956248a69081918874b4a6cfe48cbd-youthgood-ai-learn-ethical-ai","Start Learning!"),
+        ("sat.png","SAT Study Buddy","Your AI friend to help prepare for the SAT.","https://chatgpt.com/g/g-hWcrS9Nnh-youthgood-ai-sat-study-buddy","Start Studying!"),
+        ("geometry.png","Geometry GPT","Step-by-step geometry tutor with explanations.","https://chatgpt.com/g/g-IR6Z6WJNg-youthgood-ai-geometry-mathematics","Try It!"),
+        ("biomed.png","Biomed GPT","Study tips, career advice, and research guidance.","https://chatgpt.com/g/g-679ebbc68134819190f2cd813fb8c3b5-youthgood-ai-biomed","Start Studying!"),
+        ("biology.png","Biology GPT","Improve your biology skills with an AI tutor.","https://chatgpt.com/g/g-679eb62b0fd08191b9acc01004bded94-youthgood-ai-biology","Start Studying!"),
+        ("chemistry.png","Chemistry GPT","Explains concepts and solves problems with humor!","https://chatgpt.com/g/g-j7J1BqniU-youthgood-ai-chemistry","Start Studying!"),
+        ("physics.png","Physics GPT","An engaging tutor that ends sessions with a joke!","https://chatgpt.com/g/g-wc7wAkaQo-youthgood-ai-physics","Start Studying!"),
+        ("worldhistory.png","World History GPT","Expand your knowledge through engaging lessons.","https://chatgpt.com/g/g-aGv1WbWGN-youthgood-ai-world-history","Start Studying!"),
+        ("english.png","English GPT","Improve essays, writing, and communication skills.","https://chatgpt.com/g/g-gfA9CMJdc-youthgood-ai-english","Start Studying!"),
+        ("technews.png","AI & Tech News GPT","Stay updated on the latest AI and tech news.","https://chatgpt.com/g/g-HW4Mt4Ahs-youthgood-ai-artificial-intelligence","Start Learning!"),
+        ("ehs.png","Emerald High School GPT","Your friendly guide to EHS info and events!","https://chatgpt.com/g/g-67afe93056608191aa29c3552f25890a-emerald-high-school-gpt-youthgood-ai","Try It!")
+      ] %}
+
+      {% for img,title,desc,link,cta in gpts %}
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <div class="card bg-dark border border-secondary h-100 shadow-sm text-light">
+          <img src="../static/images/{{ img }}"
+               class="card-img-top"
+               alt="{{ title }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ title }}</h5>
+            <p class="card-text small text-light opacity-75">
+              {{ desc }}
+            </p>
+            <div class="mt-auto">
+              <a href="{{ link }}"
+                 target="_blank"
+                 class="btn btn-primary w-100">
+                {{ cta }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
     </div>
   </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 YouthGood.ai — Empowering Students with Ethical AI</p>
-  </footer>
-</body>
-</html>
+<!-- NAVIGATION BUTTONS -->
+<section class="py-5 text-center border-top border-secondary">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+      <a href="/teachers" class="btn btn-outline-info btn-lg px-4">
+        Explore Teacher GPTs
+      </a>
+      <a href="/fun" class="btn btn-outline-light btn-lg px-4">
+        Explore Fun GPTs
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+  
