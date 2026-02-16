@@ -1,103 +1,206 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Y.E.A.H. Program | YouthGood.ai</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .yeah-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+{% extends 'base.html' %} {% block content %}
 
-    .yeah-text {
-      flex: 1 1 500px;
-    }
+<!-- ================= PAGE HEADER ================= -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Y.E.A.H. Programs</h2>
+    <p class="lead text-light opacity-75 mx-auto" style="max-width: 900px">
+      Youth leadership programs exploring responsible and ethical Artificial
+      Intelligence in education and society.
+    </p>
+  </div>
+</section>
 
-    .yeah-text h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #00adb5;
-    }
+<!-- ================= TESTIMONIALS ================= -->
+<section class="py-5 bg-dark text-light">
+  <div class="container text-center">
+    <h2 class="fw-bold text-info mb-3">⭐ What Students Are Saying</h2>
 
-    .yeah-text p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
+    <div class="mb-4 fs-3 text-warning">★★★★★</div>
 
-    .yeah-image {
-      flex: 1 1 400px;
-      text-align: center;
-    }
+    <div
+      id="testimonialCarousel"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <blockquote class="blockquote mx-auto" style="max-width: 800px">
+            <p class="lead">
+              “I really enjoyed the YEAH program because it helped me see AI in
+              new ways. I learned how technology can affect people’s lives and
+              why it’s important to think carefully about how we use it.”
+            </p>
+          </blockquote>
+        </div>
 
-    .yeah-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    @media (max-width: 800px) {
-      .yeah-container {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="youthgood-logo.png" alt="YouthGood.ai Logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="teachers.html">For Teachers</a>
-      <a href="students.html">For Students</a>
-      <a href="fun.html">Fun</a>
-      <a href="ambassadors.html">Ambassadors</a>
-      <a href="yeah.html">Y.E.A.H. Program</a>
-      <a href="blogs.html">Blogs</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero"></section>
-
-  <section id="yeah" class="section">
-    <div class="yeah-container">
-      <div class="yeah-text">
-        <h2>Y.E.A.H. (Youth Empowerment Through AI for Humanity)</h2>
-        <p>
-          The <strong>Y.E.A.H. Program</strong> is an initiative under YouthGood.ai that empowers youth leaders to learn and promote the
-          responsible and ethical use of Artificial Intelligence in education and society. It's a completely free program to join in! At the end
-          of the 4 week session, students who participate will be able to earn a certificate of the Y.E.A.H. program! We hope this program allows
-          students to walk away with more experience in ethical AI and are able to see the real-world implications that artificial intelligence effects.
-        </p>
-        <p>
-          Y.E.A.H. members gain leadership experience, build teamwork skills, and engage in meaningful conversations about how AI can
-          shape a more equitable and creative future.
-        </p>
-        <div style="margin-top: 1.5rem;">
-          <a class="btn" href="contact.html">The Fall Y.E.A.H. Program Cohort is officially closed!
-            <strong>Keep an eye out for the Spring Y.E.A.H. Program Cohort</strong></a>
+        <div class="carousel-item">
+          <blockquote class="blockquote mx-auto" style="max-width: 800px">
+            <p class="lead">
+              “I really liked all four weekly sessions. The way we assimilated
+              the information was excellent. The presentation was very
+              informative. I also liked the certificate and the design.”
+            </p>
+          </blockquote>
         </div>
       </div>
 
-      <div class="yeah-image">
-        <img src="yeahflyer.png" alt="YEAH Program Flyer" />
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#testimonialCarousel"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon"
+          style="filter: invert(1)"
+        ></span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#testimonialCarousel"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon"
+          style="filter: invert(1)"
+        ></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CURRENT PROGRAMS ================= -->
+<section class="py-5 text-light">
+  <div class="container">
+    <h2 class="fw-bold text-warning mb-5 text-center">🌍 Current Programs</h2>
+
+    <div class="row align-items-center g-5">
+      <!-- iYEAH Flyer FIRST -->
+      <div class="col-lg-6 text-center">
+        <img
+          src="../static/images/iYEAH_America.png"
+          class="img-fluid rounded shadow"
+          alt="iYEAH Spring Flyer"
+        />
+      </div>
+
+      <!-- iYEAH Info -->
+      <div class="col-lg-6">
+        <h3 class="fw-bold text-warning mb-3">
+          iYEAH — International Spring Cohort
+        </h3>
+
+        <p>
+          <strong
+            >iYEAH (International Youth Empowerment Through AI for
+            Humanity)</strong
+          >
+          expands the Y.E.A.H. mission globally. This Spring cohort welcomes
+          students from around the world to explore ethical AI, real-world
+          impact, and responsible technology use.
+        </p>
+
+        <p>
+          🗓 <strong>Spring Cohort Dates:</strong><br />
+          April 7 (Tuesday) & April 9 (Thursday)<br />
+          5:00 – 5:45 PM PST (Zoom)
+        </p>
+
+        <p>
+          Open to middle and high school students internationally. No prior
+          experience required.
+        </p>
+
+        <div class="mt-4">
+          <h5 class="fw-bold mb-3">Select Your Region:</h5>
+
+          <div class="row g-3">
+            <div class="col-6 col-md-6">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScFtgebJARLHRm8fe5eCcMMe_74gpWqMWcdsNfARsnLEVWqcw/viewform?usp=dialog"
+                target="_blank"
+                class="btn btn-warning w-100 fw-bold"
+              >
+                🌏 Asia
+              </a>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfHaqFgjKf1Cy0mxTWbPJQ3_LcIjUWa59orCgKIRRPoixo_Rw/viewform?usp=dialog"
+                target="_blank"
+                class="btn btn-warning w-100 fw-bold"
+              >
+                🇪🇺 Europe
+              </a>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSd8YkR6hnZa5_nDxTGqzwrYyNPIkq-FEKsk8xYGAE_-aG9n0g/viewform?usp=dialog"
+                target="_blank"
+                class="btn btn-warning w-100 fw-bold"
+              >
+                🌎 North America
+              </a>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdU5sgqN3PGFR0skseGO5SZs3MwlGyJEPUGHUuzUtG4JQsdZA/viewform?usp=dialog"
+                target="_blank"
+                class="btn btn-warning w-100 fw-bold"
+              >
+                🇮🇳 India
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 YouthGood.ai — Inspiring Youth Through Ethical AI</p>
-  </footer>
-</body>
-</html>
+<!-- ================= PAST PROGRAMS ================= -->
+<section class="py-5 bg-dark text-light">
+  <div class="container">
+    <h2 class="fw-bold text-info mb-5 text-center">🎓 Past Programs</h2>
+
+    <div class="row align-items-center g-5">
+      <!-- YEAH Info -->
+      <div class="col-lg-6">
+        <h3 class="fw-bold text-info mb-3">Y.E.A.H. — Fall Cohort</h3>
+
+        <p>
+          The <strong>Y.E.A.H. Program</strong> empowered youth leaders to learn
+          and promote the responsible and ethical use of Artificial Intelligence
+          in education and society.
+        </p>
+
+        <p>
+          Students gained leadership experience, teamwork skills, and real-world
+          ethical AI insight while earning a
+          <strong>Certificate of Completion</strong>.
+        </p>
+
+        <a href="/contact" class="btn btn-outline-info mt-3 px-4">
+          Stay Tuned for Future Cohorts
+        </a>
+      </div>
+
+      <!-- YEAH Flyer -->
+      <div class="col-lg-6 text-center">
+        <img
+          src="../static/images/yeahflyer.png"
+          class="img-fluid rounded shadow"
+          alt="YEAH Fall Flyer"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
