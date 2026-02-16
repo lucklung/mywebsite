@@ -1,110 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fun & Growth | YouthGood.ai</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <img src="youthgood-logo.png" alt="YouthGood.ai Logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="teachers.html">For Teachers</a>
-      <a href="students.html">For Students</a>
-      <a href="fun.html">Fun</a>
-      <a href="yeah.html">Y.E.A.H. Program</a>
-      <a href="blogs.html">Blogs</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+{% extends 'base.html' %}
+{% block content %}
 
-  <section class="hero"></section>
+<!-- PAGE HEADER -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">For Fun & Personal Growth</h2>
+    <p class="lead text-light opacity-75">
+      Explore creative, language, productivity, and lifestyle AI tools designed for curiosity and growth.
+    </p>
+  </div>
+</section>
 
-  <section id="fun-growth" class="section">
-    <h2>For Fun and Personal Growth</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="petpal.png" alt="Virtual Pet Pal">
-        <h3>Virtual Pet Pal</h3>
-        <p>Interact with a Virtual Pet Pal who will listen and talk to you!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-7I84O2nBY-youthgood-ai-virtual-pet-pal" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="swift.png" alt="Swift GPT">
-        <h3>Swift (Coding Language) GPT</h3>
-        <p>Teaches Swift (Coding Language) for Apple!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-v9XPyc0b2-youthgood-ai-learn-swift-for-apple" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="tradingcard.png" alt="Trading Card GPT">
-        <h3>Trading Card GPT</h3>
-        <p>Research specific values of trading cards (Pokemon, Sports, etc)</p>
-        <a class="btn" href="https://chatgpt.com/g/g-aSjweY39p-youthgood-ai-trading-card-guide-and-assistant" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="videogames.png" alt="Video Games Walkthrough GPT">
-        <h3>Video Games Walkthrough and Guide GPT</h3>
-        <p>Get walkthroughs and guides on any video game you want!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-6756262ca3d881919a668c0c15184ef5-youthgood-ai-video-games-walkthrough-and-guides" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="japanese.png" alt="Japanese Translator GPT">
-        <h3>Japanese Translator GPT</h3>
-        <p>Translate English to Japanese through the Speech Mode!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-67422fc8d924819199bdc1131bb38506-youthgood-ai-japanese-translator-voice-agent" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="french.png" alt="French Translator GPT">
-        <h3>French Translator GPT</h3>
-        <p>Translate English to French through the Speech Mode!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-67425730fa28819195fe118706f20382-youthgood-ai-french-english-translator-agent" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="chinese.png" alt="Chinese Translator GPT">
-        <h3>Chinese Translator GPT</h3>
-        <p>Translate English to Chinese through the Speech Mode!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-6755e0e098648191b07b6856f107c2e6-youthgood-ai-chinese-english-translator-agent" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="creativewriting.png" alt="Creative Writing GPT">
-        <h3>Creative Writing</h3>
-        <p>Improve your creative writing skills!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-P2edKnDuv-youthgood-ai-creative-writing" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="timemanagement.png" alt="Time Management GPT">
-        <h3>Time Management GPT</h3>
-        <p>Enhance your time management skills!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-0AcMBrld1-youthgood-ai-time-management" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="philosophies.png" alt="Ethics & Philosophies GPT">
-        <h3>Ethics & Philosophies GPT</h3>
-        <p>Expose yourself to ethics and philosophies!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-jwhaMn9ne-youthgood-ai-ethics-philosophies" target="_blank">Get Started</a>
-      </div>
-      <div class="card">
-        <img src="finances.png" alt="Finances GPT">
-        <h3>Finances GPT</h3>
-        <p>Learn more about finances!</p>
-        <a class="btn" href="https://chatgpt.com/g/g-BVxooJMus-youthgood-ai-finances" target="_blank">Get Started</a>
-      </div>
-    </div>
-  </section>
+<!-- FUN GPT CARDS -->
+<section class="pb-5 text-light">
+  <div class="container">
+    <div class="row g-4">
 
-  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-    <div style="margin-left: 1.5rem;">
-      <a class="btn" href="students.html">Explore Students GPTs</a>
-    </div>
-    <div style="margin-left: 1.5rem;">
-      <a class="btn" href="teachers.html">Explore Teachers GPTs</a>
+      {% set gpts = [
+        ("petpal.png","Virtual Pet Pal","Interact with a virtual pet who listens and talks with you.","https://chatgpt.com/g/g-7I84O2nBY-youthgood-ai-virtual-pet-pal"),
+        ("swift.png","Swift (Coding) GPT","Learn Swift programming for Apple development.","https://chatgpt.com/g/g-v9XPyc0b2-youthgood-ai-learn-swift-for-apple"),
+        ("tradingcard.png","Trading Card GPT","Research values of trading cards (Pokemon, Sports, etc).","https://chatgpt.com/g/g-aSjweY39p-youthgood-ai-trading-card-guide-and-assistant"),
+        ("videogames.png","Video Game Walkthrough GPT","Get guides and walkthroughs for your favorite games.","https://chatgpt.com/g/g-6756262ca3d881919a668c0c15184ef5-youthgood-ai-video-games-walkthrough-and-guides"),
+        ("japanese.png","Japanese Translator GPT","Translate English to Japanese using Speech Mode.","https://chatgpt.com/g/g-67422fc8d924819199bdc1131bb38506-youthgood-ai-japanese-translator-voice-agent"),
+        ("french.png","French Translator GPT","Translate English to French using Speech Mode.","https://chatgpt.com/g/g-67425730fa28819195fe118706f20382-youthgood-ai-french-english-translator-agent"),
+        ("chinese.png","Chinese Translator GPT","Translate English to Chinese using Speech Mode.","https://chatgpt.com/g/g-6755e0e098648191b07b6856f107c2e6-youthgood-ai-chinese-english-translator-agent"),
+        ("creativewriting.png","Creative Writing GPT","Improve your creative writing skills.","https://chatgpt.com/g/g-P2edKnDuv-youthgood-ai-creative-writing"),
+        ("timemanagement.png","Time Management GPT","Enhance productivity and time management skills.","https://chatgpt.com/g/g-0AcMBrld1-youthgood-ai-time-management"),
+        ("philosophies.png","Ethics & Philosophies GPT","Explore ethical ideas and philosophical thinking.","https://chatgpt.com/g/g-jwhaMn9ne-youthgood-ai-ethics-philosophies"),
+        ("finances.png","Finances GPT","Learn more about personal finance and money.","https://chatgpt.com/g/g-BVxooJMus-youthgood-ai-finances")
+      ] %}
+
+      {% for img,title,desc,link in gpts %}
+      <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <div class="card bg-dark border border-secondary h-100 shadow-sm text-light">
+          <img src="../static/images/{{ img }}"
+               class="card-img-top"
+               alt="{{ title }}">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ title }}</h5>
+            <p class="card-text small text-light opacity-75">
+              {{ desc }}
+            </p>
+            <div class="mt-auto">
+              <a href="{{ link }}"
+                 target="_blank"
+                 class="btn btn-primary w-100">
+                Get Started
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
     </div>
   </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 YouthGood.ai — Inspiring Youth Through Ethical AI</p>
-  </footer>
-</body>
-</html>
+<!-- NAVIGATION BUTTONS -->
+<section class="py-5 text-center border-top border-secondary">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+      <a href="/students" class="btn btn-outline-info btn-lg px-4">
+        Explore Student GPTs
+      </a>
+      <a href="/teachers" class="btn btn-outline-light btn-lg px-4">
+        Explore Teacher GPTs
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
