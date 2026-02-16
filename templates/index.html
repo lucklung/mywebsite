@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HERO -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">
+      Shaping the Future with Ethical AI for Youth
+    </h2>
+    <p class="lead mx-auto text-light opacity-75" style="max-width: 800px;">
+      YouthGood.ai combines personalized learning support with responsible AI
+      principles to promote fairness, transparency, and inclusivity. We aim to
+      help youth not just use AI, but lead with it.
+    </p>
+    <a href="/students" class="btn btn-primary btn-lg mt-3 px-4">
+      Explore GPTs
+    </a>
+  </div>
+</section>
+
+<!-- COLLABORATED SCHOOLS -->
+<section class="py-5 text-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Collaborated Schools</h2>
+
+    <div class="row g-3">
+      {% set schools = [
+        "Aldine High School, TX","Alpharetta High School, GA","Arvada High School, CO",
+        "Banneker High School, GA","Bear Creek High School, CO","Bedford High School, OH",
+        "Boswel High School, TX","Cambridge High School, GA","Carmody Middle School, CO",
+        "G. W. Carver Senior High School, TX","Centennial High School, OH",
+        "Chatfield Senior High School, CO","Chisholm Trail High School, TX",
+        "Columbine High School, CO","Conifer Senior High School, CO",
+        "Fossil Ridge High School, TX","Hendrickson High School, TX",
+        "Keller Collegiate Academy, TX","Klein Cain High School, TX",
+        "Lake Highlands High School, TX","San Diego High School, CA",
+        "Mifflin High School, OH","Mission Bay High School, CA",
+        "Nimitz High School, TX","Northland High School, OH",
+        "Pflugerville High School, TX","Timber Creek High School, TX",
+        "Watson High School, TX","Weiss High School, TX"
+      ] %}
+
+      {% for school in schools %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="card bg-dark border border-secondary text-center h-100 shadow-sm">
+          <div class="card-body py-2 small">
+            {{ school }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- YEAH PROGRAM -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Get Certified in Ethical AI!</h2>
+    <p class="mx-auto text-light opacity-75" style="max-width: 900px;">
+      Join the <strong>Y.E.A.H. (Youth Empowerment through AI for Humanity)</strong>
+      Program — a free 4-week virtual experience for middle and high school students.
+      Learn about ethical AI, real-world dilemmas, and how technology impacts society,
+      while earning a <strong>Certificate of Completion</strong>.
+    </p>
+    <a href="/yeah" class="btn btn-success btn-lg mt-3 px-4">
+      Learn More & Join
+    </a>
+  </div>
+</section>
+
+<!-- AI MIRROR -->
+<section class="py-5 text-center text-light border-top border-secondary">
+  <div class="container">
+    <h2 class="fw-bold text-info mb-3">
+      🪞 Want to Test How Ethical Your Prompt Is? Try AI Mirror!
+    </h2>
+    <p class="mx-auto text-light opacity-75" style="max-width: 800px;">
+      Instantly evaluate your AI prompts for fairness, integrity, and
+      responsibility using the YouthGood Ethical AI Evaluator.
+    </p>
+    <a href="/aimirror" class="btn btn-info btn-lg mt-3 px-4 text-dark fw-bold">
+      Launch AI Mirror
+    </a>
+  </div>
+</section>
+
+<!-- BLOGS -->
+<section class="py-5 text-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Latest Blogs</h2>
+
+    <div class="row g-4">
+
+      {% set blogs = [
+        ("whyai.png","What is Artificial Intelligence, Really?","https://medium.com/@lukasleung1/what-is-artificial-intelligence-really-4682f5592a88"),
+        ("blog-thumbnail.png","Why Ethical AI Must Start With Youth","https://medium.com/@lukasleung1/why-ethical-ai-must-start-with-youth-empowering-the-next-generation-through-tools-not-fear-7e42e42c7afc"),
+        ("beyondpic.png","Beyond Algorithms: Who Decides What’s Fair?","https://medium.com/@lukasleung1/beyond-algorithms-who-decides-whats-fair-875a812ea8ba")
+      ] %}
+
+      {% for img,title,link in blogs %}
+      <div class="col-md-4">
+        <div class="card bg-dark border border-secondary h-100 shadow-sm">
+          <img src="../static/images/{{ img }}" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title text-light">{{ title }}</h5>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="{{ link }}"
+               target="_blank"
+               class="btn btn-outline-info w-100">
+              Read on Medium
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
