@@ -2,12 +2,12 @@ from flask import Flask, render_template, request
 from google import genai
 import json
 import re
+import os
 
 app = Flask(__name__)
 
 # Securely load API key from file
-with open("apikey.txt", "r") as f:
-    api_key = f.read().strip()
+API_KEY = os.environ.get("API_KEY")
 
 client = genai.Client(api_key=api_key)
 
