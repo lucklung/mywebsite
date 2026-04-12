@@ -2,11 +2,12 @@ from flask import Flask, render_template, request
 from google import genai
 import json
 import re
-import os
 
 app = Flask(__name__)
 
-api_key = os.environ.get("GOOGLE_API_KEY")
+# Securely load API key from file
+with open("apikey.txt", "r") as f:
+    api_key = f.read().strip()
 
 client = genai.Client(api_key=api_key)
 
@@ -31,7 +32,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/blogs')
-def blogs():
+def blogs():                            
     return render_template('blogs.html')    
 
 @app.route('/contact')
@@ -53,6 +54,10 @@ def teachers():
 @app.route('/yeah')
 def yeah():
     return render_template('yeah.html')
+
+@app.route("/ambassador")
+def ambassador():
+    return render_template("ambassador.html")
 
 @app.route('/aimirror')
 def aimirror():
@@ -132,5 +137,4 @@ def evaluate():
         return render_template('aimirror.html', message=message, scores=placeholder_scores)
 
 if __name__ == "__main__":
-    app.run()
-
+    app.run(debug=True)
