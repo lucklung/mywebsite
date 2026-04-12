@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section style="padding: 60px 20px; max-width: 1100px; margin: auto;">
+  
+  <h1 style="text-align: center; margin-bottom: 20px;">
+    YouthGood.ai Global Ambassador Program
+  </h1>
+
+  <p style="text-align: center; font-size: 18px; margin-bottom: 50px;">
+    Join a student-led global movement shaping the future of ethical AI.
+  </p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+
+    <!-- LEFT SIDE TEXT -->
+    <div style="flex: 1; min-width: 300px;">
+      
+      <h2>Become a YouthGood.ai Ambassador</h2>
+
+      <p>
+        YouthGood.ai is building a global network of student leaders passionate about ethical AI,
+        technology, and positive impact.
+      </p>
+
+      <h3>What You’ll Do:</h3>
+      <ul>
+        <li>Lead discussions in your school or community</li>
+        <li>Help expand ethical AI education globally</li>
+        <li>Collaborate with students across different countries</li>
+        <li>Invite peers to join the Y.E.A.H. program</li>
+      </ul>
+
+      <h3>Who Can Apply?</h3>
+      <ul>
+        <li>Middle & high school students</li>
+        <li>Interested in AI, tech, or social impact</li>
+        <li>Motivated to lead and make a difference</li>
+      </ul>
+
+      <div style="margin-top: 30px;">
+        <a href="https://forms.gle/da2CfF739ag9rR5x6"
+           target="_blank"
+           style="background-color: #4CAF50;
+                  color: white;
+                  padding: 14px 28px;
+                  text-decoration: none;
+                  border-radius: 8px;
+                  font-weight: bold;">
+          Apply Now
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE FLYER IMAGE -->
+    <div style="flex: 1; min-width: 300px; text-align: center;">
+      <img src="{{ url_for('static', filename='images/ambassador_flyer.png') }}"
+           alt="YouthGood.ai Ambassador Flyer"
+           style="width: 100%; max-width: 450px; border-radius: 12px;">
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}
