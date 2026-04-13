@@ -6,8 +6,12 @@ import os
 
 app = Flask(__name__)
 
-# Securely load API key from file
-API_KEY = os.environ.get("API_KEY")
+# Load API key from environment variable
+api_key = os.environ.get("API_KEY")
+
+# Optional safety check
+if not api_key:
+    raise ValueError("API_KEY environment variable not set")
 
 client = genai.Client(api_key=api_key)
 
