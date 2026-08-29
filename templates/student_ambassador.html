@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HERO -->
+<section class="py-5 text-center text-light">
+  <div class="container">
+    <h1 class="fw-bold mb-3">Student Ambassadors</h1>
+
+    <p class="lead mx-auto text-light opacity-75" style="max-width: 800px;">
+      Meet the student leaders helping YouthGood.ai expand ethical AI
+      education in their schools and communities.
+    </p>
+  </div>
+</section>
+
+
+<!-- AMBASSADORS -->
+<section class="py-5 text-light">
+  <div class="container">
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- AADITH -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-dark border border-secondary h-100 shadow">
+          
+          <img
+            src="{{ url_for('static', filename='images/aadith.png') }}"
+            class="card-img-top"
+            alt="Aadith D"
+            style="height: 400px; object-fit: cover;"
+          >
+
+          <div class="card-body text-center p-4">
+            <h3 class="fw-bold text-light mb-2">
+              Aadith D.
+            </h3>
+
+            <p class="text-info mb-0">
+              Amador Valley High School
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- RILEY -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-dark border border-secondary h-100 shadow">
+
+          <img
+            src="{{ url_for('static', filename='images/riley.png') }}"
+            class="card-img-top"
+            alt="Riley F"
+            style="height: 400px; object-fit: cover;"
+          >
+
+          <div class="card-body text-center p-4">
+            <h3 class="fw-bold text-light mb-2">
+              Riley F.
+            </h3>
+
+            <p class="text-info mb-0">
+              Queen Alexandra Middle School
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- TANISHI -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card bg-dark border border-secondary h-100 shadow">
+
+          <img
+            src="{{ url_for('static', filename='images/tanishi.png') }}"
+            class="card-img-top"
+            alt="Tanishi T"
+            style="height: 400px; object-fit: cover;"
+          >
+
+          <div class="card-body text-center p-4">
+            <h3 class="fw-bold text-light mb-2">
+              Tanishi T.
+            </h3>
+
+            <p class="text-info mb-0">
+              Olentangy Orange Middle School
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- JOIN CTA -->
+<section class="py-5 text-center text-light border-top border-secondary">
+  <div class="container">
+
+    <h2 class="fw-bold mb-3">
+      Join Our Global Ambassador Community
+    </h2>
+
+    <p class="mx-auto text-light opacity-75" style="max-width: 700px;">
+      Interested in helping bring ethical AI education to your school or
+      community? Become a YouthGood.ai Student Ambassador.
+    </p>
+
+    <a
+      href="/ambassador"
+      class="btn btn-primary btn-lg mt-3 px-4"
+    >
+      Become an Ambassador
+    </a>
+
+  </div>
+</section>
+
+{% endblock %}
