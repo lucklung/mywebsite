@@ -1,155 +1,108 @@
-{% extends 'base.html'%}
-{% block content%}
+{% extends 'base.html' %}
+{% block content %}
 
-    <div class="container">
-      <div class="text-center mb-4">
-        <h1 class="display-5 fw-bold">Is Your Prompt Ethical?</h1>
-        <p class="lead">
-          Enter a prompt below and get instant feedback on how responsible and
-          ethical it is before sending it to an AI.
-        </p>
-      </div>
+<div class="yg-page yg-page-section" style="background: var(--warm-50)">
+  <div style="max-width: 720px; margin: 0 auto">
 
-      <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <form action="/evaluate" method="POST">
-                <div class="mb-3">
-                  <label for="prompt" class="form-label"
-                    ><strong>Your Prompt:</strong></label
-                  >
-                  <textarea
-                    id="prompt"
-                    name="prompt"
-                    class="form-control"
-                    rows="6"
-                    placeholder="e.g., 'Can you write my entire essay for me?'"
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">
-                  Analyze Prompt
-                </button>
-              </form>
-            </div>
-          </div>
+    <h1 class="yg-display-title yg-text-center">Is Your Prompt Ethical?</h1>
+    <p class="yg-text-center" style="margin-bottom: 28px">
+      Enter a prompt below and get instant feedback on how responsible and
+      ethical it is before sending it to an AI.
+    </p>
+
+    <div class="yg-card">
+      <form action="/evaluate" method="POST">
+        <textarea
+          id="prompt"
+          name="prompt"
+          class="yg-textarea"
+          rows="4"
+          placeholder="e.g. Can you help brainstorm arguments for an essay on climate change?"
+        ></textarea>
+        <div style="margin-top: 14px; display: flex; justify-content: flex-end">
+          <button type="submit" class="btn-primary">Analyze Prompt</button>
         </div>
-      </div>
+      </form>
+    </div>
 
-      <!-- Scores Section -->
-      <div class="container mb-5">
-        <div class="row row-cols-1 row-cols-md-5 g-3">
-          {% for criterion, label in {
-            'purpose_intent': 'Purpose and Intent',
-            'autonomy_integrity': 'Autonomy and Integrity',
-            'social_impact_harm': 'Social Impact / Harm',
-            'clarity_specificity': 'Clarity and Specificity',
-            'alignment_ai_ethics': 'AI Ethics Alignment'
-          }.items() %}
-          <div class="col">
-            <div class="card text-center shadow-sm h-100">
-              <div class="card-body d-flex flex-column justify-content-between">
-                <div>
-                  <h5 class="card-title">{{ label }}</h5>
-                  <p
-                    class="display-6 text-white py-2 px-3 rounded {{ scores[criterion]|get_color_class }}"
-                  >
-                    {{ scores[criterion] }} / 20
-                  </p>
-                </div>
-                <div>
-                  <button
-                    class="btn btn-sm btn-outline-primary"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#explanation-{{ loop.index }}"
-                  >
-                    Why this score?
-                  </button>
-                  <div class="collapse mt-2" id="explanation-{{ loop.index }}">
-                    <div class="card card-body small">
-                      {{ explanations[criterion] if explanations and criterion in explanations else 'Explanation will appear here.' }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+    <!-- SCORE METERS -->
+    <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 14px">
+      {% for key, label in [
+        ('purpose_intent', 'Purpose and Intent'),
+        ('autonomy_integrity', 'Autonomy and Integrity'),
+        ('social_impact_harm', 'Social Impact / Harm'),
+        ('clarity_specificity', 'Clarity and Specificity'),
+        ('alignment_ai_ethics', 'AI Ethics Alignment')
+      ] %}
+      {% set score = scores[key] if scores[key] is not string else 0 %}
+      {% set pct = (score / 20 * 100) %}
+      {% set band = 'high' if score >= 15 else ('mid' if score >= 10 else 'low') %}
+      <div>
+        <div class="yg-scoremeter-row">
+          <span class="yg-scoremeter-label">{{ label }}</span>
+          <span class="yg-scoremeter-value">{{ scores[key] }} / 20</span>
         </div>
+        <div class="yg-scoremeter-track">
+          <div class="yg-scoremeter-fill yg-scoremeter-fill--{{ band }}" style="width: {{ pct }}%"></div>
+        </div>
+        {% if explanations and key in explanations %}
+        <details class="yg-explain-toggle" style="margin-top: 6px">
+          <summary>Why this score?</summary>
+          <div class="yg-explain-body">{{ explanations[key] }}</div>
+        </details>
+        {% endif %}
       </div>
+      {% endfor %}
+    </div>
 
-      <!-- Total Score + Feedback -->
-      {% if scores['total_score'] is not none %}
-      <div class="row mb-5">
-        <div class="col-md-6">
-          <div
-            class="card text-center shadow-sm border-primary h-100 d-flex justify-content-center align-items-center"
-            style="min-height: 160px"
-          >
-            <div class="card-body">
-              <h5 class="card-title text-primary mb-2">🧮 Total Score</h5>
-              <p class="display-6">{{ scores['total_score'] }} / 100</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm border-info h-100">
-            <div class="card-body">
-              <h5 class="card-title text-info">Feedback</h5>
-              <p class="small">{{ feedback }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% endif %}
+    <!-- TOTAL SCORE + FEEDBACK -->
+    {% if scores['total_score'] is not string %}
+    {% set total = scores['total_score'] %}
+    {% set total_band = 'high' if total >= 75 else ('mid' if total >= 50 else 'low') %}
+    <div class="yg-total-score">
+      <div class="yg-total-score-label">🧮 Total Score</div>
+      <div class="yg-total-score-value {{ total_band }}">{{ total }}<span class="yg-total-score-suffix"> / 100</span></div>
+    </div>
 
-      <!-- Example Prompts -->
-      <div class="mt-5 text-center">
-        <h5>🔍 Example Prompts:</h5>
-        <p>
-          <span class="text-danger"><strong>Unethical:</strong></span>
-          "Write my essay for me"
-        </p>
-        <p>
-          <span class="text-success"><strong>Ethical:</strong></span>
-          "Can you help brainstorm arguments for an essay on climate change?"
-        </p>
-      </div>
+    {% if feedback %}
+    <div class="yg-card" style="margin-top: 20px">
+      <h3 class="yg-h3">Feedback</h3>
+      <p style="margin: 0">{{ feedback }}</p>
+    </div>
+    {% endif %}
+    {% endif %}
 
-      <!-- Criteria Accordion -->
-      <div class="container mt-4 mb-5 pb-5">
-        <h4 class="mb-3">Scoring Criteria</h4>
-        <div class="accordion" id="criteriaAccordion">
-          {% set criteria = [
-            ("purpose_intent", "Purpose & Intent", "Is the prompt aimed at learning, curiosity, or productivity (vs cheating or harm)?"),
-            ("autonomy_integrity", "Autonomy & Integrity", "Does it respect the user's own role (not 'do it for me' but 'help me understand')?"),
-            ("social_impact_harm", "Social Impact / Harm", "Could the output cause harm, spread misinformation, or promote bias?"),
-            ("clarity_specificity", "Clarity & Specificity", "Is the prompt well-defined and constructive for AI to answer responsibly?"),
-            ("alignment_ai_ethics", "AI Ethics Alignment", "Does it reflect responsible AI use (transparency, fairness, accountability)?")
-          ] %}
-          {% for key, label, desc in criteria %}
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#criteria{{ loop.index }}"
-              >
-                {{ label }}
-              </button>
-            </h2>
-            <div
-              id="criteria{{ loop.index }}"
-              class="accordion-collapse collapse"
-              data-bs-parent="#criteriaAccordion"
-            >
-              <div class="accordion-body">{{ desc }}</div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
+    {% if message %}
+    <p class="yg-text-center" style="color: var(--danger-500); margin-top: 16px">{{ message }}</p>
+    {% endif %}
+
+    <!-- EXAMPLE PROMPTS -->
+    <div class="yg-example-row">
+      <div><strong class="bad">Unethical:</strong> &ldquo;Write my essay for me&rdquo;</div>
+      <div><strong class="good">Ethical:</strong> &ldquo;Help me brainstorm essay arguments&rdquo;</div>
+    </div>
+
+    <!-- SCORING CRITERIA -->
+    <div style="margin-top: 40px">
+      <h3 class="yg-h3">Scoring Criteria</h3>
+      <div class="yg-accordion">
+        {% set criteria = [
+          ("Purpose & Intent", "Is the prompt aimed at learning, curiosity, or productivity (vs cheating or harm)?"),
+          ("Autonomy & Integrity", "Does it respect the user's own role (not 'do it for me' but 'help me understand')?"),
+          ("Social Impact / Harm", "Could the output cause harm, spread misinformation, or promote bias?"),
+          ("Clarity & Specificity", "Is the prompt well-defined and constructive for AI to answer responsibly?"),
+          ("AI Ethics Alignment", "Does it reflect responsible AI use (transparency, fairness, accountability)?")
+        ] %}
+        {% for label, desc in criteria %}
+        <details class="yg-accordion-item">
+          <summary>{{ label }}</summary>
+          <div class="yg-accordion-body">{{ desc }}</div>
+        </details>
+        {% endfor %}
       </div>
     </div>
-{% endblock%}
+
+  </div>
+</div>
+
+{% endblock %}

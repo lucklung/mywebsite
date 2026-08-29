@@ -1,133 +1,51 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-<!-- PAGE HEADER -->
-<section class="py-5 text-center">
-  <div class="container">
-    <h2 class="fw-bold mb-3">
-      Free AI Resources for Teachers
-    </h2>
-    <p class="lead">
-      Empowering educators with practical and ethical AI tools.
-    </p>
-  </div>
-</section>
+<div class="yg-page">
 
-<!-- GPT CARDS -->
-<section class="pb-5">
-  <div class="container">
-    <div class="row g-4">
-
-      <!-- Teacher Aid GPT -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="../static/images/teacheraid.png"
-               class="card-img-top"
-               alt="Teacher Aid GPT">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Teacher Aid GPT</h5>
-            <p class="card-text">
-              Streamline lesson planning and boost classroom engagement!
-            </p>
-            <div class="mt-auto">
-              <a href="https://chatgpt.com/g/g-vyATB7ynj-youthgood-ai-teacher-aid"
-                 target="_blank"
-                 class="btn btn-primary w-100">
-                Get Started!
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Intro to AI -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="../static/images/educatorsk-12.png"
-               class="card-img-top"
-               alt="Intro to AI for Educators K-12">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Intro to AI for Educators K-12</h5>
-            <p class="card-text">
-              A friendly starting guide to help K-12 educators integrate AI in classrooms.
-            </p>
-            <div class="mt-auto">
-              <a href="https://chatgpt.com/g/g-67f71786d024819194749b84c8aeb530-intro-to-ai-educators-k-12"
-                 target="_blank"
-                 class="btn btn-primary w-100">
-                Start Using!
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Practical AI Tips -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="../static/images/aitips.png"
-               class="card-img-top"
-               alt="Practical AI Tips for Teachers">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Practical AI Tips for Teachers</h5>
-            <p class="card-text">
-              A supportive guide helping teachers confidently use AI tools.
-            </p>
-            <div class="mt-auto">
-              <a href="https://chatgpt.com/g/g-67f72e7c1f8c81918b05343774568d63-practical-ai-tips-for-teachers"
-                 target="_blank"
-                 class="btn btn-primary w-100">
-                Start Using!
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ethical AI -->
-      <div class="col-md-6 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="../static/images/ethicalai.png"
-               class="card-img-top"
-               alt="Ethical AI for Educators">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Ethical AI for Educators</h5>
-            <p class="card-text">
-              Help teachers use AI responsibly and ethically in the classroom.
-            </p>
-            <div class="mt-auto">
-              <a href="https://chatgpt.com/g/g-67f7094b0d0c8191ae7084194dd5b7a9-youthgood-ai-ethical-ai-guide-for-educators"
-                 target="_blank"
-                 class="btn btn-primary w-100">
-                Get Started
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <!-- PAGE HEADER -->
+  <section class="yg-page-section yg-text-center">
+    <div class="yg-container">
+      <h1 class="yg-display-title">Free AI Resources for Teachers</h1>
+      <p class="yg-lead">Empowering educators with practical and ethical AI tools.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- NAVIGATION BUTTONS -->
-<section class="py-5 text-center bg-dark">
-  <div class="container">
-    <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+  <!-- GPT CARDS -->
+  <section class="yg-page-section">
+    <div class="yg-container">
+      <div class="yg-grid-cards">
 
-      <a href="/students"
-         class="btn btn-primary btn-lg px-4">
-        Explore Student GPTs
-      </a>
+        {% set gpts = [
+          ("teacheraid.png","Teacher Aid GPT","Streamline lesson planning and boost classroom engagement!","https://chatgpt.com/g/g-vyATB7ynj-youthgood-ai-teacher-aid","Get Started!"),
+          ("educatorsk-12.png","Intro to AI for Educators K-12","A friendly starting guide to help K-12 educators integrate AI in classrooms.","https://chatgpt.com/g/g-67f71786d024819194749b84c8aeb530-intro-to-ai-educators-k-12","Start Using!"),
+          ("aitips.png","Practical AI Tips for Teachers","A supportive guide helping teachers confidently use AI tools.","https://chatgpt.com/g/g-67f72e7c1f8c81918b05343774568d63-practical-ai-tips-for-teachers","Start Using!"),
+          ("ethicalai.png","Ethical AI for Educators","Help teachers use AI responsibly and ethically in the classroom.","https://chatgpt.com/g/g-67f7094b0d0c8191ae7084194dd5b7a9-youthgood-ai-ethical-ai-guide-for-educators","Get Started")
+        ] %}
 
-      <a href="/fun"
-         class="btn btn-info btn-lg px-4 text-dark">
-        Explore Fun GPTs
-      </a>
+        {% for img,title,desc,link,cta in gpts %}
+        <div class="yg-card yg-gpt-card">
+          <span class="yg-badge yg-badge-forest">Educator</span>
+          <img src="{{ url_for('static', filename='images/' + img) }}" class="yg-gpt-image" alt="{{ title }}" />
+          <div class="yg-gpt-title">{{ title }}</div>
+          <div class="yg-gpt-desc">{{ desc }}</div>
+          <a href="{{ link }}" target="_blank" class="btn-outline btn-sm">{{ cta }}</a>
+        </div>
+        {% endfor %}
 
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- NAVIGATION BUTTONS -->
+  <section class="yg-page-section yg-text-center">
+    <div class="yg-container">
+      <div class="yg-nav-cta-row">
+        <a href="/students" class="btn-outline btn-lg">Explore Student GPTs</a>
+        <a href="/fun" class="btn-outline btn-lg">Explore Fun GPTs</a>
+      </div>
+    </div>
+  </section>
+
+</div>
 
 {% endblock %}

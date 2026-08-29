@@ -1,67 +1,121 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section style="padding: 60px 20px; max-width: 1100px; margin: auto;">
-  
-  <h1 style="text-align: center; margin-bottom: 20px;">
-    YouthGood.ai Global Ambassador Program
-  </h1>
+<div class="yg-page">
 
-  <p style="text-align: center; font-size: 18px; margin-bottom: 50px;">
-    Join a student-led global movement shaping the future of ethical AI.
-  </p>
-
-  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-
-    <!-- LEFT SIDE TEXT -->
-    <div style="flex: 1; min-width: 300px;">
-      
-      <h2>Become a YouthGood.ai Ambassador</h2>
-
-      <p>
-        YouthGood.ai is building a global network of student leaders passionate about ethical AI,
-        technology, and positive impact.
+  <!-- HERO -->
+  <section class="yg-page-section yg-section--forest">
+    <div class="yg-container">
+      <span class="yg-badge yg-badge-amber">Now Recruiting</span>
+      <h1 class="yg-display-title" style="margin: 12px 0 8px">YouthGood.ai Global Ambassador Program</h1>
+      <p class="yg-lead" style="max-width: 660px">
+        Join a student-led global movement shaping the future of ethical AI.
       </p>
+      <div class="yg-pill-row">
+        <div class="yg-pill" style="background: var(--amber-500)">🌍 Global Network</div>
+        <div class="yg-pill" style="background: #5ADBFF">🗣 Student-Led</div>
+        <div class="yg-pill" style="background: var(--amber-300)">⚖️ Ethical AI</div>
+        <div class="yg-pill" style="background: var(--forest-300)">🎓 Certificate</div>
+      </div>
+    </div>
+  </section>
 
-      <h3>What You’ll Do:</h3>
-      <ul>
-        <li>Lead discussions in your school or community</li>
-        <li>Help expand ethical AI education globally</li>
-        <li>Collaborate with students across different countries</li>
-        <li>Invite peers to join the Y.E.A.H. program</li>
-      </ul>
+  <div class="yg-page-section">
+    <div class="yg-container">
 
-      <h3>Who Can Apply?</h3>
-      <ul>
-        <li>Middle & high school students</li>
-        <li>Interested in AI, tech, or social impact</li>
-        <li>Motivated to lead and make a difference</li>
-      </ul>
+      <div style="max-width: 720px; margin-bottom: 40px">
+        <h2 class="yg-h1">Become a YouthGood.ai Ambassador</h2>
+        <p>
+          YouthGood.ai is a youth-led initiative empowering students worldwide to think critically about artificial intelligence, its ethics, and its impact on society. We are building a global network of student leaders passionate about ethical AI, technology, and positive impact — and we're looking for motivated student leaders like you.
+        </p>
+      </div>
 
-      <div style="margin-top: 30px;">
-        <a href="https://forms.gle/da2CfF739ag9rR5x6"
-           target="_blank"
-           style="background-color: #4CAF50;
-                  color: white;
-                  padding: 14px 28px;
-                  text-decoration: none;
-                  border-radius: 8px;
-                  font-weight: bold;">
-          Apply Now
-        </a>
+      <div class="yg-grid-cards--wide" style="margin-bottom: var(--space-6)">
+        <div class="yg-card" style="padding: var(--space-8); border-top: 5px solid var(--forest-500)">
+          <h3 class="yg-h2">Ways You Can Get Involved</h3>
+          <ul class="yg-checklist">
+            <li><span class="yg-check">✓</span><span>Share YouthGood.ai with friends or classmates</span></li>
+            <li><span class="yg-check">✓</span><span>Invite students to join the Y.E.A.H. program</span></li>
+            <li><span class="yg-check">✓</span><span>Explore and discuss real-world AI topics</span></li>
+            <li><span class="yg-check">✓</span><span>Collaborate with students from other schools or countries</span></li>
+            <li><span class="yg-check">✓</span><span>Lead or host discussions and workshops at your school (optional)</span></li>
+            <li><span class="yg-check">✓</span><span>Help expand ethical AI education globally</span></li>
+          </ul>
+        </div>
+
+        <div class="yg-card" style="padding: var(--space-8); border-top: 5px solid var(--amber-500)">
+          <h3 class="yg-h2">What You'll Gain by Joining</h3>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4)">
+            <div class="yg-infoblock yg-infoblock--amber">
+              <div class="yg-infoblock-label">⭐ Leadership Experience</div>
+              <div class="yg-infoblock-value">Lead a global initiative</div>
+              <div class="yg-infoblock-sub">Hands-on experience guiding an initiative focused on ethical technology</div>
+            </div>
+            <div class="yg-infoblock yg-infoblock--amber">
+              <div class="yg-infoblock-label">⭐ Mentorship &amp; Networking</div>
+              <div class="yg-infoblock-value">Work with the founder</div>
+              <div class="yg-infoblock-sub">Connect with motivated students worldwide and grow your network in tech and ethics</div>
+            </div>
+            <div class="yg-infoblock yg-infoblock--amber">
+              <div class="yg-infoblock-label">⭐ Certificate of Participation</div>
+              <div class="yg-infoblock-value">Recognized contribution</div>
+              <div class="yg-infoblock-sub">Earn a certificate recognizing your work as a YouthGood.ai Ambassador</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="yg-card" style="padding: var(--space-8); margin-bottom: var(--space-6)">
+        <h3 class="yg-h2">Who Can Apply?</h3>
+        <div class="yg-grid-cards">
+          <div class="yg-infoblock">
+            <div class="yg-infoblock-label">👥 Grade Level</div>
+            <div class="yg-infoblock-value">Middle &amp; high school</div>
+            <div class="yg-infoblock-sub">Students worldwide — all regions welcome</div>
+          </div>
+          <div class="yg-infoblock">
+            <div class="yg-infoblock-label">💡 Interests</div>
+            <div class="yg-infoblock-value">AI, tech, or social impact</div>
+            <div class="yg-infoblock-sub">No prior experience required</div>
+          </div>
+          <div class="yg-infoblock">
+            <div class="yg-infoblock-label">🚀 Mindset</div>
+            <div class="yg-infoblock-value">Motivated to lead</div>
+            <div class="yg-infoblock-sub">Ready to make a difference in your community</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: var(--space-6)">
+        <h2 class="yg-h1">Current Student Ambassadors</h2>
+        <p style="margin-bottom: var(--space-6)">Meet some of the students already leading the movement at their schools.</p>
+
+        <div class="yg-grid-cards--wide">
+          {% set ambassadors = [
+            ("aadith.png", "Aadith D", "Amador Valley High School"),
+            ("riley.png", "Riley F", "Queen Alexandra Middle School"),
+            ("tanishi.png", "Tanishi T", "Olentangy Orange Middle School")
+          ] %}
+          {% for img, name, school in ambassadors %}
+          <div class="yg-card yg-text-center">
+            <img src="{{ url_for('static', filename='images/' + img) }}" class="yg-ambassador-photo" alt="{{ name }}" />
+            <div class="yg-ambassador-name">{{ name }}</div>
+            <div class="yg-ambassador-school">{{ school }}</div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="yg-card yg-text-center yg-section--forest" style="padding: var(--space-8)">
+        <div class="yg-h2">Become a Founding Ambassador</div>
+        <p style="margin: 0 auto 20px; max-width: 520px">Applications are open now. Lead the future of ethical AI with students from around the world.</p>
+        <a href="https://forms.gle/da2CfF739ag9rR5x6" target="_blank" class="btn-primary">Apply Now →</a>
+        <div style="margin-top: 16px; font-size: 13px; opacity: 0.75">YouthGood.ai — Ethical AI for the next generation</div>
       </div>
 
     </div>
-
-    <!-- RIGHT SIDE FLYER IMAGE -->
-    <div style="flex: 1; min-width: 300px; text-align: center;">
-      <img src="{{ url_for('static', filename='images/ambassador_flyer.png') }}"
-           alt="YouthGood.ai Ambassador Flyer"
-           style="width: 100%; max-width: 450px; border-radius: 12px;">
-    </div>
-
   </div>
 
-</section>
+</div>
 
 {% endblock %}

@@ -1,104 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<section class="py-5 text-light">
-  <div class="container">
+<div class="yg-page">
+  <section class="yg-page-section">
+    <div class="yg-container-narrow">
+      <h1 class="yg-display-title" style="margin-bottom: 32px">Latest Blogs</h1>
 
-    <h2 class="text-center fw-bold mb-5">Latest Blogs</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--space-6)">
 
-    <div class="row g-4">
+        {% set blogs = [
+          ("whyai.png","What is Artificial Intelligence, Really?","A deep dive into what AI truly means beyond buzzwords, exploring how it learns, thinks, and impacts our world. Discover how understanding AI’s real nature helps shape its responsible future.","https://medium.com/@lukasleung1/what-is-artificial-intelligence-really-4682f5592a88"),
+          ("blog-thumbnail.png","Why Ethical AI Must Start With Youth","A passionate call to action for empowering the next generation through AI tools, not fear. Learn why teaching students to use AI responsibly is key to building a more ethical, innovative future.","https://medium.com/@lukasleung1/why-ethical-ai-must-start-with-youth-empowering-the-next-generation-through-tools-not-fear-7e42e42c7afc"),
+          ("beyondpic.png","Beyond Algorithms: Who Decides What’s Fair?","Exploring how AI can transform classrooms, empower teachers, and inspire students, while keeping ethics and humanity at the core of learning.","https://medium.com/@lukasleung1/beyond-algorithms-who-decides-whats-fair-875a812ea8ba")
+        ] %}
 
-      <!-- Blog 1 -->
-      <div class="col-md-4">
-        <div class="card bg-dark border-0 h-100 shadow">
-
-          <img src="../static/images/whyai.png"
-               class="card-img-top"
-               alt="What is Artificial Intelligence, Really?"
-               style="height: 250px; object-fit: cover;">
-
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">
-              What is Artificial Intelligence, Really?
-            </h5>
-
-            <p class="card-text text-light opacity-75">
-              A deep dive into what AI truly means beyond buzzwords, exploring how it
-              learns, thinks, and impacts our world. Discover how understanding AI’s
-              real nature helps shape its responsible future.
-            </p>
-
-            <a href="https://medium.com/@lukasleung1/what-is-artificial-intelligence-really-4682f5592a88"
-               target="_blank"
-               class="btn btn-outline-info mt-auto w-100">
-              Read on Medium
-            </a>
+        {% for img,title,desc,link in blogs %}
+        <a href="{{ link }}" target="_blank" class="yg-card" style="display: grid; grid-template-columns: 140px 1fr; gap: 20px; align-items: center; text-decoration: none; color: var(--text-primary)">
+          <img src="{{ url_for('static', filename='images/' + img) }}" style="width: 100%; height: 100px; object-fit: cover; border-radius: var(--radius-md); display: block" alt="{{ title }}" />
+          <div>
+            <div style="font-family: var(--font-display); font-weight: 600; font-size: 18px; margin-bottom: 6px">{{ title }}</div>
+            <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 8px">{{ desc }}</div>
+            <div style="font-size: 13px; color: var(--link); font-weight: 600">Read on Medium →</div>
           </div>
+        </a>
+        {% endfor %}
 
-        </div>
       </div>
-
-      <!-- Blog 2 -->
-      <div class="col-md-4">
-        <div class="card bg-dark border-0 h-100 shadow">
-
-          <img src="../static/images/blog-thumbnail.png"
-               class="card-img-top"
-               alt="Why Ethical AI Must Start With Youth"
-               style="height: 250px; object-fit: cover;">
-
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">
-              Why Ethical AI Must Start With Youth
-            </h5>
-
-            <p class="card-text text-light opacity-75">
-              A passionate call to action for empowering the next generation through
-              AI tools, not fear. Learn why teaching students to use AI responsibly is
-              key to building a more ethical, innovative future.
-            </p>
-
-            <a href="https://medium.com/@lukasleung1/why-ethical-ai-must-start-with-youth-empowering-the-next-generation-through-tools-not-fear-7e42e42c7afc"
-               target="_blank"
-               class="btn btn-outline-info mt-auto w-100">
-              Read on Medium
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Blog 3 -->
-      <div class="col-md-4">
-        <div class="card bg-dark border-0 h-100 shadow">
-
-          <img src="../static/images/beyondpic.png"
-               class="card-img-top"
-               alt="Beyond Algorithms: Who Decides What’s Fair?"
-               style="height: 250px; object-fit: cover;">
-
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">
-              Beyond Algorithms: Who Decides What’s Fair?
-            </h5>
-
-            <p class="card-text text-light opacity-75">
-              Exploring how AI can transform classrooms, empower teachers, and inspire
-              students, while keeping ethics and humanity at the core of learning.
-            </p>
-
-            <a href="https://medium.com/@lukasleung1/beyond-algorithms-who-decides-whats-fair-875a812ea8ba"
-               target="_blank"
-               class="btn btn-outline-info mt-auto w-100">
-              Read on Medium
-            </a>
-          </div>
-
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 {% endblock %}

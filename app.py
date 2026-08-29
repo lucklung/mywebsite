@@ -1,10 +1,14 @@
 from flask import Flask, render_template, request
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from google import genai
 import json
 import re
 import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+load_dotenv()
 
 # Load API key from environment variable
 api_key = os.environ.get("API_KEY")
@@ -14,6 +18,38 @@ if not api_key:
     raise ValueError("API_KEY environment variable not set")
 
 client = genai.Client(api_key=api_key)
+
+# Caps how many times a single visitor can call the Gemini-backed AI Mirror
+# endpoint. Visitors are identified by IP address (there's no login system),
+# so everyone behind the same IP (e.g. a school network) shares one daily
+# allowance. Storage is in-memory, which is only correct for a single worker
+# process (see Procfile) — scaling to multiple gunicorn workers would need a
+# shared store (e.g. Redis) passed via storage_uri instead.
+limiter = Limiter(
+    key_func=get_remote_address,
+    app=app,
+    default_limits=[],
+)
+
+AI_MIRROR_PLACEHOLDER_SCORES = {
+    "purpose_intent": "--",
+    "autonomy_integrity": "--",
+    "social_impact_harm": "--",
+    "clarity_specificity": "--",
+    "alignment_ai_ethics": "--",
+    "total_score": "--",
+}
+
+
+@app.errorhandler(429)
+def ai_mirror_rate_limited(e):
+    message = (
+        "You've reached today's limit of 5 AI Mirror analyses from this "
+        "network. Please try again tomorrow."
+    )
+    return render_template(
+        'aimirror.html', message=message, scores=AI_MIRROR_PLACEHOLDER_SCORES
+    ), 429
 
 # Jinja2 filter for color styling
 @app.template_filter('get_color_class')
@@ -65,17 +101,10 @@ def ambassador():
 
 @app.route('/aimirror')
 def aimirror():
-    placeholder_scores = {
-        "purpose_intent": "--",
-        "autonomy_integrity": "--",
-        "social_impact_harm": "--",
-        "clarity_specificity": "--",
-        "alignment_ai_ethics": "--",
-        "total_score": "--"
-    }
-    return render_template('aimirror.html', scores=placeholder_scores)
+    return render_template('aimirror.html', scores=AI_MIRROR_PLACEHOLDER_SCORES)
 
 @app.route('/evaluate', methods=['POST'])
+@limiter.limit("5 per day")
 def evaluate():
     prompt = request.form['prompt']
 
@@ -130,15 +159,9 @@ def evaluate():
     except Exception as e:
         print("Error:", e)
         message = 'Not able to process request. Try again.'
-        placeholder_scores = {
-            "purpose_intent": "--",
-            "autonomy_integrity": "--",
-            "social_impact_harm": "--",
-            "clarity_specificity": "--",
-            "alignment_ai_ethics": "--",
-            "total_score": "--"
-        }
-        return render_template('aimirror.html', message=message, scores=placeholder_scores)
+        return render_template(
+            'aimirror.html', message=message, scores=AI_MIRROR_PLACEHOLDER_SCORES
+        )
 
 if __name__ == "__main__":
     app.run(debug=True)
