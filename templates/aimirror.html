@@ -11,7 +11,7 @@
     </p>
 
     <div class="yg-card">
-      <form action="/evaluate" method="POST">
+      <form action="/evaluate" method="POST" id="yg-evaluate-form">
         <textarea
           id="prompt"
           name="prompt"
@@ -20,10 +20,18 @@
           placeholder="e.g. Can you help brainstorm arguments for an essay on climate change?"
         ></textarea>
         <div style="margin-top: 14px; display: flex; justify-content: flex-end">
-          <button type="submit" class="btn-primary">Analyze Prompt</button>
+          <button type="submit" class="btn-primary" id="yg-analyze-btn">Analyze Prompt</button>
         </div>
       </form>
     </div>
+
+    <!-- LOADING STATE -->
+    <div id="yg-loading" class="yg-loading" hidden>
+      <div class="yg-spinner" role="status" aria-label="Analyzing prompt"></div>
+      <div>Analyzing your prompt&hellip;</div>
+    </div>
+
+    <div id="yg-results">
 
     <!-- SCORE METERS -->
     <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 14px">
@@ -76,6 +84,8 @@
     <p class="yg-text-center" style="color: var(--danger-500); margin-top: 16px">{{ message }}</p>
     {% endif %}
 
+    </div><!-- /#yg-results -->
+
     <!-- EXAMPLE PROMPTS -->
     <div class="yg-example-row">
       <div><strong class="bad">Unethical:</strong> &ldquo;Write my essay for me&rdquo;</div>
@@ -104,5 +114,23 @@
 
   </div>
 </div>
+
+<script>
+  (function () {
+    var form = document.getElementById('yg-evaluate-form');
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      var results = document.getElementById('yg-results');
+      if (results) results.hidden = true;
+      var loading = document.getElementById('yg-loading');
+      if (loading) loading.hidden = false;
+      var btn = document.getElementById('yg-analyze-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Analyzing…';
+      }
+    });
+  })();
+</script>
 
 {% endblock %}
