@@ -2,8 +2,8 @@ from flask import Flask, render_template, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from google import genai
+from google.genai import types
 import json
-import re
 import os
 from dotenv import load_dotenv
 
@@ -106,11 +106,18 @@ def aimirror():
 @app.route('/evaluate', methods=['POST'])
 @limiter.limit("5 per day")
 def evaluate():
-    prompt = request.form['prompt']
+    prompt = request.form.get('prompt', '').strip()
+    if not prompt:
+        return render_template(
+            'aimirror.html',
+            message='Please enter a prompt to analyze.',
+            scores=AI_MIRROR_PLACEHOLDER_SCORES,
+        )
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=f'''Analyze the following user prompt using the five ethical scoring criteria.
+    try:
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=f'''Analyze the following user prompt using the five ethical scoring criteria.
 
 **CRITERIA:**
 1.  **Purpose & Intent (Max 20 pts)** – Is the prompt aimed at learning, curiosity, or productivity (vs cheating or harm)?
@@ -147,11 +154,15 @@ def evaluate():
 
 **USER PROMPT TO EVALUATE:**
 {prompt}
-'''
-    )
+''',
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                thinking_config=types.ThinkingConfig(thinking_budget=0),
+                http_options=types.HttpOptions(timeout=60_000),  # milliseconds
+            ),
+        )
 
-    try:
-        results = json.loads(re.search(r'{.*}', response.text, re.DOTALL).group())
+        results = json.loads(response.text)
         scores = results['scores']
         feedback = results['feedback']
         explanations = results['explanations']

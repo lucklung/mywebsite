@@ -94,11 +94,22 @@
           {% set ambassadors = [
             ("aadith.png", "Aadith D", "Amador Valley High School"),
             ("riley.png", "Riley F", "Queen Alexandra Middle School"),
-            ("tanishi.png", "Tanishi T", "Olentangy Orange Middle School")
+            ("tanishi.png", "Tanishi T", "Olentangy Orange Middle School"),
+            ("markus.jpg", "Markus L", "Fallon Middle School"),
+            (None, "Sanskruth G", "William Hopkins Middle School")
           ] %}
           {% for img, name, school in ambassadors %}
           <div class="yg-card yg-text-center">
+            {% if img %}
             <img src="{{ url_for('static', filename='images/' + img) }}" class="yg-ambassador-photo" alt="{{ name }}" />
+            {% else %}
+            <div class="yg-ambassador-photo yg-ambassador-photo--placeholder" role="img" aria-label="No photo available">
+              <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+              </svg>
+            </div>
+            {% endif %}
             <div class="yg-ambassador-name">{{ name }}</div>
             <div class="yg-ambassador-school">{{ school }}</div>
           </div>
